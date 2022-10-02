@@ -44,6 +44,8 @@
 
 #include "bootloader.h"
 
+#define UNIT_TEST_MODE
+
 int main() 
 {
   check_enter_bootloader();
