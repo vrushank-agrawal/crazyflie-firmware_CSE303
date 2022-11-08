@@ -197,6 +197,7 @@ void systemTask(void *arg)
 
   #ifdef CONFIG_ESTIMATOR_KALMAN_ENABLE
   estimatorKalmanTaskInit();
+  DEBUG_PRINT("Kalman estimator enabled");
   #endif
 
   deckInit();
