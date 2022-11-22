@@ -216,6 +216,9 @@ static void checkEmergencyStopTimeout()
  * (ie. returning without modifying the output structure).
  */
 
+// #include <stdio.h>
+// static char ptrTaskList[250];
+
 static void stabilizerTask(void* param)
 {
   uint32_t tick;
@@ -239,9 +242,10 @@ static void stabilizerTask(void* param)
 
   DEBUG_PRINT("Ready to fly.\n");
 
-  char ptrTaskList[250];
-  vTaskList(ptrTaskList);
-  DEBUG_PRINT(ptrTaskList);
+  // vTaskList(ptrTaskList);
+  DEBUG_PRINT("Start task list");
+  // Serial.printf(ptrTaskList);
+  DEBUG_PRINT("End task list");
 
   while(1) {
     // The sensor should unlock at 1kHz
