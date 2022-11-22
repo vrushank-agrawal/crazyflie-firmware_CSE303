@@ -239,6 +239,10 @@ static void stabilizerTask(void* param)
 
   DEBUG_PRINT("Ready to fly.\n");
 
+  char ptrTaskList[250];
+  vTaskList(ptrTaskList);
+  DEBUG_PRINT(ptrTaskList);
+
   while(1) {
     // The sensor should unlock at 1kHz
     sensorsWaitDataReady();
