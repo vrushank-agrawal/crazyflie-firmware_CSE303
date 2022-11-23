@@ -77,7 +77,7 @@ static ControllerType controllerType;
 
 static STATS_CNT_RATE_DEFINE(stabilizerRate, 500);
 static rateSupervisor_t rateSupervisorContext;
-static bool rateWarningDisplayed = false;
+// static bool rateWarningDisplayed = false;
 
 static struct {
   // position - mm
@@ -248,6 +248,9 @@ static void stabilizerTask(void* param)
   consolePrintf(ptrTaskList);
   DEBUG_PRINT("End task list\n");
 
+  tempSetpoint.mode.x = 5;
+  tempSetpoint.mode.y = 15;
+  // tempSetpoint.mode.z = 340;
   while(1) {
     // The sensor should unlock at 1kHz
     sensorsWaitDataReady();
@@ -301,24 +304,28 @@ static void stabilizerTask(void* param)
         motorsSetRatio(MOTOR_M4, motorPower.m4);
       }
 
-#ifdef CONFIG_DECK_USD
-      // Log data to uSD card if configured
-      if (usddeckLoggingEnabled()
-          && usddeckLoggingMode() == usddeckLoggingMode_SynchronousStabilizer
-          && RATE_DO_EXECUTE(usddeckFrequency(), tick)) {
-        usddeckTriggerLogging();
-      }
-#endif
+// #ifdef CONFIG_DECK_USD
+//       // Log data to uSD card if configured
+//       if (usddeckLoggingEnabled()
+//           && usddeckLoggingMode() == usddeckLoggingMode_SynchronousStabilizer
+//           && RATE_DO_EXECUTE(usddeckFrequency(), tick)) {
+//         usddeckTriggerLogging();
+//       }
+// #endif
       calcSensorToOutputLatency(&sensorData);
       tick++;
       STATS_CNT_RATE_EVENT(&stabilizerRate);
 
-      if (!rateSupervisorValidate(&rateSupervisorContext, xTaskGetTickCount())) {
-        if (!rateWarningDisplayed) {
-          DEBUG_PRINT("WARNING: stabilizer loop rate is off (%lu)\n", rateSupervisorLatestCount(&rateSupervisorContext));
-          rateWarningDisplayed = true;
-        }
+      // if (!rateSupervisorValidate(&rateSupervisorContext, xTaskGetTickCount())) {
+      //   if (!rateWarningDisplayed) {
+      //     DEBUG_PRINT("WARNING: stabilizer loop rate is off (%lu)\n", rateSupervisorLatestCount(&rateSupervisorContext));
+      //     rateWarningDisplayed = true;
+      //   }
+      // }
+      if (tick >= 1000) {
+        motorsStop();
       }
+
     }
 #ifdef CONFIG_MOTORS_ESC_PROTOCOL_DSHOT
     motorsBurstDshot();
