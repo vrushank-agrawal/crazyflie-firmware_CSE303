@@ -114,6 +114,7 @@ void memInit(void)
 
   //Start the mem task
   STATIC_MEM_TASK_CREATE(memTask, memTask, MEM_TASK_NAME, NULL, MEM_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: MemTask\n");
 
   isInit = true;
 }

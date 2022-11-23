@@ -397,6 +397,7 @@ static void sensorsTaskInit(void)
   baroPrimDataQueue = STATIC_MEM_QUEUE_CREATE(baroPrimDataQueue);
 
   STATIC_MEM_TASK_CREATE(sensorsTask, sensorsTask, SENSORS_TASK_NAME, NULL, SENSORS_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: SensorsBoschTask\n");
 }
 
 static void sensorsGyroGet(Axis3i16* dataOut, uint8_t device) {

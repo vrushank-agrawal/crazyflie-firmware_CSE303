@@ -73,6 +73,7 @@ void platformserviceInit(void)
 
   //Start the task
   STATIC_MEM_TASK_CREATE(platformSrvTask, platformSrvTask, PLATFORM_SRV_TASK_NAME, NULL, PLATFORM_SRV_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: PlatformServiceTask\n");
 
   isInit = true;
 }

@@ -195,6 +195,7 @@ bool pca9685startAsyncTask()
   }
 
   task = STATIC_MEM_TASK_CREATE(task, asyncTask, PCA9685_TASK_NAME, NULL, PCA9685_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: pca9685 AsyncTask\n");
   return true;
 }
 

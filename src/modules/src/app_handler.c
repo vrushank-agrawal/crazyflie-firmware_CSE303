@@ -49,6 +49,7 @@ void __attribute__((weak)) appInit()
   }
 
   STATIC_MEM_TASK_CREATE(appTask, appTask, APP_TASK_NAME, NULL, CONFIG_APP_PRIORITY);
+  consolePrintf("\nSTATIC_XTASK: appTask\n");
   isInit = true;
 }
 

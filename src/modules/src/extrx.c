@@ -138,6 +138,7 @@ void extRxInit(void)
 #endif
 
   STATIC_MEM_TASK_CREATE(extRxTask, extRxTask, EXTRX_TASK_NAME, NULL, EXTRX_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: EXT_RX_TASk\n");
 }
 
 static void extRxTask(void *param)

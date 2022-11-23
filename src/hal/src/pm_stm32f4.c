@@ -127,6 +127,7 @@ void pmInit(void)
   }
 
   STATIC_MEM_TASK_CREATE(pmTask, pmTask, PM_TASK_NAME, NULL, PM_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: pmTask \n");
 
   isInit = true;
 

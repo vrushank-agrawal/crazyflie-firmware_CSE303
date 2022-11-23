@@ -57,6 +57,7 @@ void crtpserviceInit(void)
 
   //Start the task
   STATIC_MEM_TASK_CREATE(crtpSrvTask, crtpSrvTask, CRTP_SRV_TASK_NAME, NULL, CRTP_SRV_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: CRTP_Service\n");
 
   isInit = true;
 }

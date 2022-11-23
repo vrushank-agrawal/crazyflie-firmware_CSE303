@@ -92,7 +92,9 @@ void crtpInit(void)
   DEBUG_QUEUE_MONITOR_REGISTER(txQueue);
 
   STATIC_MEM_TASK_CREATE(crtpTxTask, crtpTxTask, CRTP_TX_TASK_NAME, NULL, CRTP_TX_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: CRTP_TX\n");
   STATIC_MEM_TASK_CREATE(crtpRxTask, crtpRxTask, CRTP_RX_TASK_NAME, NULL, CRTP_RX_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: CRTP_RX\n");
 
   isInit = true;
 }

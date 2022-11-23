@@ -182,6 +182,7 @@ void stabilizerInit(StateEstimatorType estimator)
   controllerType = getControllerType();
 
   STATIC_MEM_TASK_CREATE(stabilizerTask, stabilizerTask, STABILIZER_TASK_NAME, NULL, STABILIZER_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: StabilizerTask\n");
 
   isInit = true;
 }

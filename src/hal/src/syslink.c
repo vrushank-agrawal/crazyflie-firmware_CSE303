@@ -116,6 +116,7 @@ void syslinkInit()
   vSemaphoreCreateBinary(syslinkAccess);
 
   STATIC_MEM_TASK_CREATE(syslinkTask, syslinkTask, SYSLINK_TASK_NAME, NULL, SYSLINK_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: sysLinkTask\n");
 
   debugTimer = xTimerCreate( "syslinkTimer", M2T(1000), pdTRUE, NULL, debugHandler );
   xTimerStart(debugTimer, M2T(1000));

@@ -268,6 +268,7 @@ void crtpCommanderHighLevelInit(void)
 
   //Start the trajectory task
   STATIC_MEM_TASK_CREATE(crtpCommanderHighLevelTask, crtpCommanderHighLevelTask, CMD_HIGH_LEVEL_TASK_NAME, NULL, CMD_HIGH_LEVEL_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: CRTP_Commander_High_Level\n");
 
   lockTraj = xSemaphoreCreateMutexStatic(&lockTrajBuffer);
 

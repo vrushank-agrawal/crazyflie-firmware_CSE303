@@ -104,6 +104,7 @@ static void systemTask(void *arg);
 void systemLaunch(void)
 {
   STATIC_MEM_TASK_CREATE(systemTask, systemTask, SYSTEM_TASK_NAME, NULL, SYSTEM_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: SystemTask\n");
 }
 
 // This must be the first module to be initialized!

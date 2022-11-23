@@ -227,6 +227,7 @@ void logInit(void)
 
   //Start the log task
   STATIC_MEM_TASK_CREATE(logTask, logTask, LOG_TASK_NAME, NULL, LOG_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: LogTask\n");
 
   isInit = true;
 }

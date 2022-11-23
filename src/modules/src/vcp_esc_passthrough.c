@@ -65,6 +65,7 @@ void passthroughInit()
   DEBUG_QUEUE_MONITOR_REGISTER(ptRxQueue);
 
   passthroughTaskHandle = STATIC_MEM_TASK_CREATE(passthroughTask, passthroughTask, PASSTHROUGH_TASK_NAME, NULL, PASSTHROUGH_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: PassThroughTask\n");
 }
 
 void passthroughEnableFromISR()

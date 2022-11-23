@@ -69,6 +69,7 @@ void infoTask(void *param);
 void infoInit()
 {
   STATIC_MEM_TASK_CREATE(infoTask, infoTask, INFO_TASK_NAME, NULL, INFO_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: InfoTask\n");
   crtpInitTaskQueue(crtpInfo);
 }
 

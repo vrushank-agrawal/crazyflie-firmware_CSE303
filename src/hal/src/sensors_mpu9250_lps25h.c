@@ -499,6 +499,7 @@ static void sensorsTaskInit(void)
   barometerDataQueue = STATIC_MEM_QUEUE_CREATE(barometerDataQueue);
 
   STATIC_MEM_TASK_CREATE(sensorsTask, sensorsTask, SENSORS_TASK_NAME, NULL, SENSORS_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: SensorsMPU AsyncTask\n");
 }
 
 static void sensorsInterruptInit(void)

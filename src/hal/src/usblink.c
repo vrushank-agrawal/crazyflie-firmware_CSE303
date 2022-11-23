@@ -133,6 +133,7 @@ void usblinkInit()
   DEBUG_QUEUE_MONITOR_REGISTER(crtpPacketDelivery);
 
   STATIC_MEM_TASK_CREATE(usblinkTask, usblinkTask, USBLINK_TASK_NAME, NULL, USBLINK_TASK_PRI);
+  consolePrintf("\nSTATIC_XTASK: USBLink\n");
 
   isInit = true;
 }
