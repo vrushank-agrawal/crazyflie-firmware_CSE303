@@ -275,9 +275,10 @@ static void stabilizerTask(void* param)
       stateEstimator(&state, tick);
       compressState();
 
-      if (crtpCommanderHighLevelGetSetpoint(&tempSetpoint, &state, tick)) {
-        commanderSetSetpoint(&tempSetpoint, COMMANDER_PRIORITY_HIGHLEVEL);
-      }
+      // if (crtpCommanderHighLevelGetSetpoint(&tempSetpoint, &state, tick)) {
+      //   commanderSetSetpoint(&tempSetpoint, COMMANDER_PRIORITY_HIGHLEVEL);
+      // }
+      commanderSetSetpoint(&tempSetpoint, COMMANDER_PRIORITY_HIGHLEVEL);
 
       commanderGetSetpoint(&setpoint, &state);
       compressSetpoint();
