@@ -329,9 +329,10 @@ static void stabilizerTask(void* param)
           rateWarningDisplayed = true;
         }
       }
-      // if (tick >= 1000) {
-      //   motorsStop();
-      // }
+      if (tick >= 1000) {
+        motorsStop();
+        break;
+      }
 
     }
 #ifdef CONFIG_MOTORS_ESC_PROTOCOL_DSHOT
