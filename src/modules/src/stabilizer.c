@@ -218,7 +218,7 @@ static void checkEmergencyStopTimeout()
  */
 
 // #include <stdio.h>
-// static char ptrTaskList[250];
+static char ptrTaskList[250];
 
 static void stabilizerTask(void* param)
 {
@@ -245,7 +245,7 @@ static void stabilizerTask(void* param)
 
   // vTaskList(ptrTaskList);
   DEBUG_PRINT("Start task list\n");
-  // Serial.printf(ptrTaskList);
+  consolePrintf(ptrTaskList);
   DEBUG_PRINT("End task list\n");
 
   while(1) {
