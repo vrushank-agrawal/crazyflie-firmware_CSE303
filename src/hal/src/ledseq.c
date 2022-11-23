@@ -224,7 +224,7 @@ void ledseqInit() {
 
   ledseqCmdQueue = xQueueCreate(10, sizeof(struct ledseqCmd_s));
   xTaskCreate(lesdeqCmdTask, LEDSEQCMD_TASK_NAME, LEDSEQCMD_TASK_STACKSIZE, NULL, LEDSEQCMD_TASK_PRI, NULL);
-
+  consolePrintf("\nDEBUG: LedSeq xTask created\n");
   isInit = true;
 }
 

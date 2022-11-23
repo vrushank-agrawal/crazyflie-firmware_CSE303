@@ -284,6 +284,7 @@ static void gtgpsInit(DeckInfo *info)
 
   xTaskCreate(gtgpsTask, GTGPS_DECK_TASK_NAME,
               GTGPS_DECK_TASK_STACKSIZE, NULL, GTGPS_DECK_TASK_PRI, NULL);
+  DEBUG_PRINT("\nDEBUG: GlobalTopGPS xTask created\n");
 
   isInit = true;
 }

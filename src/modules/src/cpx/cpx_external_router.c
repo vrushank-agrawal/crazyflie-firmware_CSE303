@@ -127,7 +127,9 @@ void cpxExternalRouterInit() {
   xEventGroupClearBits(startUpEventGroup, START_UP_UART_ROUTER_RUNNING | START_UP_INTERNAL_ROUTER_RUNNING);
 
   xTaskCreate(router_from_uart, CPX_RT_UART_TASK_NAME, AI_DECK_TASK_STACKSIZE, NULL, AI_DECK_TASK_PRI, NULL);
+  DEBUG_PRINT("\nDEBUG: RouterfromUART xTask created\n");
   xTaskCreate(router_from_internal, CPX_RT_INT_TASK_NAME, AI_DECK_TASK_STACKSIZE, NULL, AI_DECK_TASK_PRI, NULL);
+  DEBUG_PRINT("\nDEBUG: RouterfromInternal xTask created\n");
 
   DEBUG_PRINT("Waiting for CPX External router initialization\n");
   xEventGroupWaitBits(startUpEventGroup,

@@ -66,7 +66,7 @@ void zRangerInit(DeckInfo* info)
   vl53l0xInit(&dev, I2C1_DEV, true);
 
   xTaskCreate(zRangerTask, ZRANGER_TASK_NAME, ZRANGER_TASK_STACKSIZE, NULL, ZRANGER_TASK_PRI, NULL);
-
+  DEBUG_PRINT("\nDEBUG: Zranger xTask created\n");
   // pre-compute constant in the measurement noise model for kalman
   expCoeff = logf(expStdB / expStdA) / (expPointB - expPointA);
 

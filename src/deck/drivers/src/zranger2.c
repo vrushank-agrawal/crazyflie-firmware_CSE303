@@ -98,7 +98,7 @@ void zRanger2Init(DeckInfo* info)
   }
 
   xTaskCreate(zRanger2Task, ZRANGER2_TASK_NAME, ZRANGER2_TASK_STACKSIZE, NULL, ZRANGER2_TASK_PRI, NULL);
-
+  DEBUG_PRINT("\nDEBUG: ZRanger2 xTask created\n");
   // pre-compute constant in the measurement noise model for kalman
   expCoeff = logf(expStdB / expStdA) / (expPointB - expPointA);
 

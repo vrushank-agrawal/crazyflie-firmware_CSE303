@@ -278,8 +278,10 @@ void cpxUARTTransportInit() {
   // Initialize task for the ESP while it's held in reset
   xTaskCreate(CPX_UART_RX, AIDECK_ESP_RX_TASK_NAME, AI_DECK_TASK_STACKSIZE, NULL,
               AI_DECK_TASK_PRI, NULL);
+  DEBUG_PRINT("\nDEBUG: CPX_UART_RX xTask created\n");
   xTaskCreate(CPX_UART_TX, AIDECK_ESP_TX_TASK_NAME, AI_DECK_TASK_STACKSIZE, NULL,
               AI_DECK_TASK_PRI, NULL);
+  DEBUG_PRINT("\nDEBUG: CPX_UART_TX xTask created\n");
 
   isInit = true;
 }

@@ -93,6 +93,7 @@ static void bigquadInit(DeckInfo *info)
   mspInit(&s_MspObject, osdResponseCallback);
   xTaskCreate(osdTask, BQ_OSD_TASK_NAME,
               BQ_OSD_TASK_STACKSIZE, NULL, BQ_OSD_TASK_PRI, NULL);
+  DEBUG_PRINT("\nDEBUG: BigQuadDeck xTask created\n");
 #endif
 
   isInit = true;

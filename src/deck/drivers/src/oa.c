@@ -109,6 +109,7 @@ static void oaInit()
 
   xTaskCreate(oaTask, OA_DECK_TASK_NAME, OA_DECK_TASK_STACKSIZE, NULL,
               OA_DECK_TASK_PRI, NULL);
+  DEBUG_PRINT("\nDEBUG: OA xTask created\n");
 }
 
 static bool oaTest()

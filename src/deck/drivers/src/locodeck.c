@@ -542,7 +542,7 @@ static void dwm1000Init(DeckInfo *info)
 
   xTaskCreate(uwbTask, LPS_DECK_TASK_NAME, LPS_DECK_STACKSIZE, NULL,
                     LPS_DECK_TASK_PRI, &uwbTaskHandle);
-
+  DEBUG_PRINT("\nDEBUG: DW1000 xTask created\n");
   isInit = true;
 }
 

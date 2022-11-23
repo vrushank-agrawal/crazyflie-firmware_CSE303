@@ -171,6 +171,7 @@ static void mrInit()
 
     xTaskCreate(mrTask, MULTIRANGER_TASK_NAME, MULTIRANGER_TASK_STACKSIZE, NULL,
                 MULTIRANGER_TASK_PRI, NULL);
+    DEBUG_PRINT("\nDEBUG: MultiRanger xTask created\n");
 }
 
 static bool mrTest()

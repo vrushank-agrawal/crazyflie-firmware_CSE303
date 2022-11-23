@@ -103,6 +103,8 @@ static void activeMarkerDeckInit(DeckInfo *info) {
   xTaskCreate(task, ACTIVE_MARKER_TASK_NAME,
               ACTIVEMARKER_TASK_STACKSIZE, NULL, ACTIVE_MARKER_TASK_PRI, NULL);
 
+  DEBUG_PRINT("\nDEBUG: ActiveMarckerDeck xTask created\n");
+
 #ifndef ACTIVE_MARKER_DECK_TEST
   memset(versionString, 0, VERSION_STRING_LEN + 1);
   i2cOk = i2cdevReadReg8(I2C1_DEV, DECK_I2C_ADDRESS, MEM_ADR_VER, VERSION_STRING_LEN, (uint8_t*)versionString);

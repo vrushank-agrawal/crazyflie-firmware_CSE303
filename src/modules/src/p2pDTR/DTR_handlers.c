@@ -46,6 +46,7 @@ static char type_to_spam[15];
 
 void dtrStartProtocolTask(void){
 	xTaskCreate(dtrTaskHandler, "DTR_P2P", DTR_PROTOCOL_TASK_STACK_SIZE, NULL,DTR_PROTOCOL_TASK_PRIORITY, &DTRtaskHandler);
+ 	DEBUG_PRINT("\nDEBUG: DTRStartProtocol xTask created\n");
 }
 
 void dtrStopProtocolTask(void){

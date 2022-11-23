@@ -175,6 +175,7 @@ static void flowdeck1Init()
   {
     xTaskCreate(flowdeckTask, FLOW_TASK_NAME, FLOW_TASK_STACKSIZE, NULL,
                 FLOW_TASK_PRI, NULL);
+    DEBUG_PRINT("\nDEBUG: FlowDeck1 xTask created\n");
 
     isInit1 = true;
   }
@@ -221,7 +222,7 @@ static void flowdeck2Init()
   {
     xTaskCreate(flowdeckTask, FLOW_TASK_NAME, FLOW_TASK_STACKSIZE, NULL,
                 FLOW_TASK_PRI, NULL);
-
+    DEBUG_PRINT("\nDEBUG: FlowDeck2 xTask created\n");
     isInit2 = true;
   }
 }

@@ -467,6 +467,7 @@ static void usdInit(DeckInfo *info)
       xTaskCreate(usdLogTask, USDLOG_TASK_NAME,
                   USDLOG_TASK_STACKSIZE, NULL,
                   USDLOG_TASK_PRI, NULL);
+      DEBUG_PRINT("\nDEBUG: USDLogTask xTask created\n");
     } else {
       DEBUG_PRINT("mount SD-Card [FAIL].\n");
     }
@@ -715,7 +716,7 @@ static void usdLogTask(void* prm)
     xTaskCreate(usdWriteTask, USDWRITE_TASK_NAME,
                 USDWRITE_TASK_STACKSIZE, 0,
                 USDWRITE_TASK_PRI, &xHandleWriteTask);
-
+    DEBUG_PRINT("\nDEBUG: USDWrite xTask created\n");
     bool lastEnableLogging = enableLogging;
     while(1) {
       vTaskDelayUntil(&lastWakeTime, F2T(usdLogConfig.frequency));
