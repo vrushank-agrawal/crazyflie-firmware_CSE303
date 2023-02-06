@@ -110,15 +110,12 @@ float pidUpdate(PidObject* pid, const float measured, const bool updateError)
         output = 0;
       }
      #endif
-      
     
-
     // Constrain the total PID output (unless the outputLimit is zero)
     if(pid->outputLimit != 0)
     {
       output = constrain(output, -pid->outputLimit, pid->outputLimit);
     }
-
 
     pid->prevError = pid->error;
 
