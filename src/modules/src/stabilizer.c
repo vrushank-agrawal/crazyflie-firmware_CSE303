@@ -182,7 +182,6 @@ void stabilizerInit(StateEstimatorType estimator)
   controllerType = getControllerType();
 
   STATIC_MEM_TASK_CREATE(stabilizerTask, stabilizerTask, STABILIZER_TASK_NAME, NULL, STABILIZER_TASK_PRI);
-  consolePrintf("\nSTATIC_XTASK: StabilizerTask\n");
 
   isInit = true;
 }
@@ -217,8 +216,6 @@ static void checkEmergencyStopTimeout()
  * (ie. returning without modifying the output structure).
  */
 
-// #include <stdio.h>
-static char ptrTaskList[250];
 
 static void stabilizerTask(void* param)
 {
@@ -243,21 +240,12 @@ static void stabilizerTask(void* param)
 
   DEBUG_PRINT("Ready to fly.\n");
 
-  // vTaskList(ptrTaskList);
-  DEBUG_PRINT("Start task list\n");
-  consolePrintf(ptrTaskList);
-  DEBUG_PRINT("End task list\n");
-
-  // tempSetpoint.mode.x = 5;
-  // tempSetpoint.mode.y = 15;
-  // tempSetpoint.mode.z = 340;
   while(1) {
     // The sensor should unlock at 1kHz
     sensorsWaitDataReady();
 
     // update sensorData struct (for logging variables)
     sensorsAcquire(&sensorData, tick);
-    consolePrintf("\nCONTROL: Acquired sensors data\n");
 
     if (healthShallWeRunTest()) {
       healthRunTests(&sensorData);
@@ -274,23 +262,19 @@ static void stabilizerTask(void* param)
       }
 
       stateEstimator(&state, tick);
-      consolePrintf("\nCONTROL: State estimated\n");
       compressState();
 
       if (crtpCommanderHighLevelGetSetpoint(&tempSetpoint, &state, tick)) {
         commanderSetSetpoint(&tempSetpoint, COMMANDER_PRIORITY_HIGHLEVEL);
-        consolePrintf("\nCONTROL: Set SetPoint\n");
       }
       // commanderSetSetpoint(&tempSetpoint, COMMANDER_PRIORITY_HIGHLEVEL);
 
       commanderGetSetpoint(&setpoint, &state);
-      consolePrintf("\nCONTROL: Get SetPoint\n");
       compressSetpoint();
 
       collisionAvoidanceUpdateSetpoint(&setpoint, &sensorData, &state, tick);
 
       controller(&control, &setpoint, &sensorData, &state, tick);
-      consolePrintf("\nCONTROL: Enter controller\n");
 
       checkEmergencyStopTimeout();
 
@@ -308,7 +292,6 @@ static void stabilizerTask(void* param)
         motorsSetRatio(MOTOR_M2, motorPower.m2);
         motorsSetRatio(MOTOR_M3, motorPower.m3);
         motorsSetRatio(MOTOR_M4, motorPower.m4);
-        consolePrintf("\nCONTROL: Power Distribution Set\n");
       }
 
 #ifdef CONFIG_DECK_USD
@@ -329,11 +312,6 @@ static void stabilizerTask(void* param)
           rateWarningDisplayed = true;
         }
       }
-      if (tick >= 1000) {
-        motorsStop();
-        break;
-      }
-
     }
 #ifdef CONFIG_MOTORS_ESC_PROTOCOL_DSHOT
     motorsBurstDshot();
